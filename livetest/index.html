@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livetest fnxck.js</title>
+    <link href="../src/fnxck.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
 </head>
 <body>
-    <script src="https://github.com/georgelab/cookie-dookie/blob/main/src/fnxck.js"></script>
+    <script src="../src/fnxck.js"></script>
     <script>
         var fnxck = new fnxck('testing');
         if ( fnxck.getCookie() === null ) {
@@ -15,7 +16,7 @@
             var html =  '<div class="overlay"></div>' +
                         '<div class="content">'+
                             '<div class="sec">'+
-                                '<img src="/assets/img/shield-check_wht.svg" width="32" height="32" alt="icone" title="icone" />'+
+                                '<img src="../src/fnxck_shield.svg" width="32" height="32" alt="icone" title="icone" />'+
                             '</div>'+
                             '<div class="txt">' +
                                 '<p>Este site utiliza <em>cookies</em> para promover uma melhor experiência em sua visitação. Se desejar, você pode desabilitá-los nas configurações de seu navegador.</p>'+
