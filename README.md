@@ -1,5 +1,5 @@
 # cookie-dookie
-A simple popup checkout for any website guest visitor to accept/deny cookie preferences
+A simple popup checkout for a website guest visitor to accept/deny cookies preferences
 
 ## Installation
 
