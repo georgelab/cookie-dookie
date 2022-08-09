@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livetest fnxck.js</title>
+</head>
+<body>
+    <script src="https://github.com/georgelab/cookie-dookie/blob/main/src/fnxck.js"></script>
+    <script>
+        var fnxck = new fnxck('testing');
+        if ( fnxck.getCookie() === null ) {
+            //no controlcookie - show alert
+            var html =  '<div class="overlay"></div>' +
+                        '<div class="content">'+
+                            '<div class="sec">'+
+                                '<img src="/assets/img/shield-check_wht.svg" width="32" height="32" alt="icone" title="icone" />'+
+                            '</div>'+
+                            '<div class="txt">' +
+                                '<p>Este site utiliza <em>cookies</em> para promover uma melhor experiência em sua visitação. Se desejar, você pode desabilitá-los nas configurações de seu navegador.</p>'+
+                                '<p>Ao continuar sua navegação pelos conteúdos do site, você confirma estar de acordo com nossa <a href="/politica-de-privacidade/" title="Leia nossa Política de Privacidade">Política de Privacidade</a> e com os <a href="/termos-de-uso/" title="Leia nossos Termos de Uso">Termos de Uso</a>.</p>'+
+                            '</div>' +
+                            '<div class="ctl">' +
+                                '<button class="agree" onclick="fnxck.setCookie(\'allowed\',365)">Concordo</button>'+
+                                '<button class="disagree" onclick="fnxck.setCookie(\'denied\',30)">Não concordo</button>'+
+                            '</div>' +
+                        '</div>';
+            fnxck.showWarn(html);
+        }
+    </script>
+</body>
+</html>
