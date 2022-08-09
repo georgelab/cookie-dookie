@@ -5,6 +5,7 @@ function fnxck (c){
     this.HTMLwarning    = (c.HTMLwarning) ? c.HTMLwarning : '<p>Este site utiliza cookies para promover uma melhor experiência em sua visitação. Se desejar, você pode desabilitá-los nas configurações de seu navegador.</p>',
 
     this.expiry         = (c.expiry) ? c.expiry : '-1',
+    this.badge_icon     = (c.badge_icon) ? c.badge_icon : './fnxck_shield.svg',
     this.agree_label    = (c.agree_label) ? c.agree_label : 'Concordo',
     this.agree_valid_days       = (c.agree_valid_days) ? c.agree_valid_days : 365,
     this.disagree_label = (c.disagree_label) ? c.disagree_label : 'Não concordo',
@@ -48,7 +49,7 @@ function fnxck (c){
                         '<div class="overlay"></div>'+
                         '<div class="content">'+
                         '<div class="sec">'+
-                        '<img src="../src/fnxck_shield.svg" width="32" height="32" alt="icone" title="icone" />'+
+                        '<img src="'+ this.badge_icon +'" width="32" height="32" alt="icone" title="icone" />'+
                         '</div>'+
                         '<div class="txt">' + this.HTMLwarning + '</div>' +
                         '<div class="ctl">' +
