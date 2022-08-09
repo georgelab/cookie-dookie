@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,25 +10,20 @@
 <body>
     <script src="../src/fnxck.js"></script>
     <script>
-        var fnxck = new fnxck('testing');
-        if ( fnxck.getCookie() === null ) {
-            //no controlcookie - show alert
-            var html =  '<div class="overlay"></div>' +
-                        '<div class="content">'+
-                            '<div class="sec">'+
-                                '<img src="../src/fnxck_shield.svg" width="32" height="32" alt="icone" title="icone" />'+
-                            '</div>'+
-                            '<div class="txt">' +
-                                '<p>Este site utiliza <em>cookies</em> para promover uma melhor experiência em sua visitação. Se desejar, você pode desabilitá-los nas configurações de seu navegador.</p>'+
-                                '<p>Ao continuar sua navegação pelos conteúdos do site, você confirma estar de acordo com nossa <a href="/politica-de-privacidade/" title="Leia nossa Política de Privacidade">Política de Privacidade</a> e com os <a href="/termos-de-uso/" title="Leia nossos Termos de Uso">Termos de Uso</a>.</p>'+
-                            '</div>' +
-                            '<div class="ctl">' +
-                                '<button class="agree" onclick="fnxck.setCookie(\'allowed\',365)">Concordo</button>'+
-                                '<button class="disagree" onclick="fnxck.setCookie(\'denied\',30)">Não concordo</button>'+
-                            '</div>' +
-                        '</div>';
-            fnxck.showWarn(html);
-        }
+        var fnxck = new fnxck({
+            //essential
+            cookiename: 'meu-site',
+            HTMLwarning: '<p>Sua mensagem de aviso deve ser adicionada aqui ;)</p>',
+
+            //not essential
+            expiry: '-1',
+            agree_label: 'Concordo',
+            agree_valid_days: 365,
+            disagree_label: 'Não concordo',
+            disagree_valid_days: 30,
+            
+        });
+        if ( fnxck.getCookie() === null ) fnxck.showWarn();
     </script>
 </body>
 </html>

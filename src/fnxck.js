@@ -1,6 +1,15 @@
-function fnxck (fnxcookiename='fnxck'+Math.random(), fnxcookieexpiry='-1'){
-    this.cookiename     = fnxcookiename;
-    this.expiry         = fnxcookieexpiry;
+function fnxck (c){
+    
+    console.log(c);
+    this.cookiename     = (c.cookiename) ? c.cookiename : 'fnxck_'+Math.random(),
+    this.HTMLwarning    = (c.HTMLwarning) ? c.HTMLwarning : '<p>Este site utiliza cookies para promover uma melhor experiência em sua visitação. Se desejar, você pode desabilitá-los nas configurações de seu navegador.</p>',
+
+    this.expiry         = (c.expiry) ? c.expiry : '-1',
+    this.agree_label    = (c.agree_label) ? c.agree_label : 'Concordo',
+    this.agree_valid_days       = (c.agree_valid_days) ? c.agree_valid_days : 365,
+    this.disagree_label = (c.disagree_label) ? c.disagree_label : 'Concordo',
+    this.disagree_valid_days    = (c.disagree_valid_days) ? c.disagree_valid_days : 30,
+
     this.getCookie      = function() {
         var nameEQ = this.cookiename + "=";
         var ca = document.cookie.split(';');
@@ -34,11 +43,22 @@ function fnxck (fnxcookiename='fnxck'+Math.random(), fnxcookieexpiry='-1'){
         var expires = "; expires=-1";
         document.cookie = name + "=" + expires + "; path=/";
     },
-    this.showWarn       = function(html='') {
-        var basichtml = '<p>warn</p>';
-        var innerhtml = (html) ? '<div id="boxck_'+this.cookiename+'" class="fnxcksetup">'+html+'</div>' : '<div id="boxck_'+this.cookiename+'" class="fnxcksetup">'+basichtml+'</div>';
+    this.showWarn       = function() {
+        var scaffold =  '<div id="boxck_'+this.cookiename+'" class="fnxcksetup">'+
+                        '<div class="overlay"></div>'+
+                        '<div class="content">'+
+                        '<div class="sec">'+
+                        '<img src="../src/fnxck_shield.svg" width="32" height="32" alt="icone" title="icone" />'+
+                        '</div>'+
+                        '<div class="txt">' + this.HTMLwarning + '</div>' +
+                        '<div class="ctl">' +
+                        '<button class="agree" onclick="fnxck.setCookie(\'allowed\','+ this.agree_valid_days +')">'+this.agree_label+'</button>'+
+                        '<button class="disagree" onclick="fnxck.setCookie(\'denied\','+ this.disagree_valid_days +')">'+this.disagree_label+'</button>'+
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
         var fnxdiv = document.createElement('div');
-        fnxdiv.innerHTML = innerhtml;
+        fnxdiv.innerHTML = scaffold;
         while (fnxdiv.children.length > 0) {
             document.body.appendChild(fnxdiv.children[0]);
         }
