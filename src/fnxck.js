@@ -7,7 +7,7 @@ function fnxck (c){
     this.expiry         = (c.expiry) ? c.expiry : '-1',
     this.agree_label    = (c.agree_label) ? c.agree_label : 'Concordo',
     this.agree_valid_days       = (c.agree_valid_days) ? c.agree_valid_days : 365,
-    this.disagree_label = (c.disagree_label) ? c.disagree_label : 'Concordo',
+    this.disagree_label = (c.disagree_label) ? c.disagree_label : 'Não concordo',
     this.disagree_valid_days    = (c.disagree_valid_days) ? c.disagree_valid_days : 30,
 
     this.getCookie      = function() {
@@ -62,5 +62,8 @@ function fnxck (c){
         while (fnxdiv.children.length > 0) {
             document.body.appendChild(fnxdiv.children[0]);
         }
+    },
+    this.start          = function() {
+        if ( this.getCookie() === null ) this.showWarn();
     }
 }
